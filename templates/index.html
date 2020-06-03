@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>부트스트랩 차트그리기</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <!-- 차트 링크 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+    <h2 style="color:#fff;">IRIS PREDICTION</h2>
+    <p style="color:#fff;">Using Machine Learning to Classify IRIS</p>
+  </div>
+  <p>ML App.</p>           
+</div>
+<div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="background-color:#1563ff ">IRIS PREDICTION</div>
+      <div class="panel-body">
+      
+<!-- Main Input For Receiving Query to our ML -->	
+      	<form action="{{ url_for('predict')}}" method="POST">
+			<input type="text" name="v1">
+            <input type="text" name="v2">
+            <input type="text" name="v3">
+            <input type="text" name="v4">
+			<button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+<!-- Main Input For Receiving Query to our ML --> 
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
+
